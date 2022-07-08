@@ -1,0 +1,38 @@
+<mat-form-field appearance="outline" style="width:auto">
+  <mat-label>Zoom</mat-label>
+  <mat-select [(value)]="currentLayoutWidthPages">
+    <mat-option *ngFor="let value of layoutWidthOptions" [value]="value"> {{ value }} Pages </mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="spreadContainer" *ngIf="currentLayoutWidthPages === 1">
+  <ng-container *ngFor="let page of pages">
+    <ng-container *ngTemplateOutlet="templatePageBox; context: { page: page }"></ng-container>
+  </ng-container>
+</div>
+<div
+  class="spreadContainer"
+  *ngIf="currentLayoutWidthPages > 1"
+  [ngStyle]="{ 'grid-template-columns': 'repeat(' + currentLayoutWidthPages / 2 + ', 1fr)' }"
+>
+  <ng-container *ngFor="let spread of spreads">
+    <ng-container *ngTemplateOutlet="templateSpreadBox; context: { spread: spread }"></ng-container>
+  </ng-container>
+</div>
+<ng-template #templateSpreadBox let-spread="spread">
+  <div class="spreadBox">
+    <ng-container *ngTemplateOutlet="templatePageBox; context: { page: spread[0] }"></ng-container>
+    <ng-container *ngTemplateOutlet="templatePageBox; context: { page: spread[1] }"></ng-container>
+  </div>
+</ng-template>
+<ng-template #templatePageBox let-page="page">
+  <div class="pageBox" [ngClass]="{ nullPageBox: page === null }" [ngStyle]="{ 'aspect-ratio': page?.aspectRatio }">
+    <div *ngIf="page !== null">
+      <div class="pageHeader" [ngStyle]="{ 'text-align': page.pageNo % 2 === 0 ? 'left' : 'right' }">{{ page.pageNo }}</div>
+      <svg width="100%" height="100%" viewBox="0 0 100 150" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <rect *ngIf="page.shapes % 2 >= 1" x="0" y="0" width="50" height="50" fill="#aaa" />
+        <rect *ngIf="page.shapes % 4 >= 2" x="50" y="50" width="50" height="50" fill="#aaa" />
+        <rect *ngIf="page.shapes % 8 >= 4" x="0" y="100" width="50" height="50" fill="#aaa" />
+      </svg>
+    </div>
+  </div>
+</ng-template>

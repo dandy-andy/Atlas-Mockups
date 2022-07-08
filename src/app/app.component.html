@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <button mat-raised-button [matMenuTriggerFor]="mockupmenu">
+    {{ currentRouteLabel || 'Choose Mockup' }}
+  </button>
+  <mat-menu #mockupmenu="matMenu">
+    <button
+      mat-menu-item
+      *ngFor="let route of routes"
+      routerLink="{{ route.path }}"
+    >
+      {{ route.label }}
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<div class="mockup">
+  <router-outlet></router-outlet>
+</div>

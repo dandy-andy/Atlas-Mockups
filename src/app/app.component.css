@@ -1,0 +1,11 @@
+.menu {
+  background-color: white;
+}
+.mockup {
+  margin: 20px;
+  background-color: white;
+}
+
+:host {
+  background-color: gray;
+}

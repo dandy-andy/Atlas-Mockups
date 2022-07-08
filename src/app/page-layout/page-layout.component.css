@@ -1,0 +1,30 @@
+.spreadContainer {
+  display: grid;
+  gap: 10px;
+  background-color: #eee;
+  padding: 20px;
+}
+
+.spreadBox {
+  display: flex;
+  gap: 5px;
+}
+
+.pageBox {
+  flex: 1 1 0;
+  overflow: hidden;
+  box-shadow: 1px 1px 2px 1px #7c7c7c;
+  background-color: white;
+}
+
+.pageBox.nullPageBox {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.pageHeader {
+  background-color: rgb(0, 106, 192);
+  color: white;
+  padding: 0 5px;
+}
