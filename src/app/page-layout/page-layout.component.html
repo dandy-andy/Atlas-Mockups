@@ -27,11 +27,19 @@
 <ng-template #templatePageBox let-page="page">
   <div class="pageBox" [ngClass]="{ nullPageBox: page === null }" [ngStyle]="{ 'aspect-ratio': page?.aspectRatio }">
     <div *ngIf="page !== null">
-      <div class="pageHeader" [ngStyle]="{ 'text-align': page.pageNo % 2 === 0 ? 'left' : 'right' }">{{ page.pageNo }}</div>
-      <svg width="100%" height="100%" viewBox="0 0 100 150" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <rect *ngIf="page.shapes % 2 >= 1" x="0" y="0" width="50" height="50" fill="#aaa" />
-        <rect *ngIf="page.shapes % 4 >= 2" x="50" y="50" width="50" height="50" fill="#aaa" />
-        <rect *ngIf="page.shapes % 8 >= 4" x="0" y="100" width="50" height="50" fill="#aaa" />
+      <div class="pageHeader" [ngStyle]="{ 'text-align': page.no % 2 === 0 ? 'left' : 'right' }">{{ page.sec + page.no }}</div>
+      <svg [attr.viewBox]="'0 0 ' + page.w + ' ' + page.h" xmlns="http://www.w3.org/2000/svg">
+        <rect
+          class="shape"
+          [ngClass]="{ adShape: s.t === 1, reserveShape: s.t === 2 }"
+          *ngFor="let s of page.shapes"
+          [attr.x]="s.x + 1"
+          [attr.y]="s.y + 1"
+          [attr.width]="s.w - 2"
+          [attr.height]="s.h - 2"
+          stroke-width="1"
+          vector-effect="non-scaling-stroke"
+        />
       </svg>
     </div>
   </div>
