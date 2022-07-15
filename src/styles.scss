@@ -32,3 +32,17 @@ body {
 .button-panel button + button {
   margin-left: 10px;
 }
+
+mat-toolbar.mat-toolbar mat-label {
+  font-size: 0.7rem;
+  margin-right: 5px;
+}
+
+mat-toolbar.mat-toolbar mat-select.mat-select .mat-select-value-text {
+  font-size: 0.8rem;
+}
+
+mat-toolbar.mat-toolbar mat-select.mat-select {
+  font-size: 0.9rem;
+  width: auto;
+}
