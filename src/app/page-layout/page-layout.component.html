@@ -28,7 +28,7 @@
   </div>
 </ng-template>
 <ng-template #templatePageBox let-page="page">
-  <div class="pageBox" [ngClass]="{ nullPageBox: page === null }" [ngStyle]="{ 'aspect-ratio': page?.aspectRatio }">
+  <div class="pageBox" [ngClass]="{ nullPageBox: page === null }">
     <div *ngIf="page !== null">
       <div class="pageHeader" [ngStyle]="{ 'text-align': page.no % 2 === 0 ? 'left' : 'right' }">{{ page.sec + page.no }}</div>
       <svg [attr.viewBox]="'0 0 ' + page.w + ' ' + page.h" xmlns="http://www.w3.org/2000/svg">
