@@ -1,10 +1,8 @@
 <mat-toolbar color="primary">
-
-    <mat-label class="label-inline">Zoom:</mat-label>
-    <mat-select [(value)]="currentLayoutWidthPages">
-      <mat-option *ngFor="let value of layoutWidthOptions" [value]="value"> {{ value }} Pages </mat-option>
-    </mat-select>
-
+  <mat-label class="label-inline">Zoom:</mat-label>
+  <mat-select [(value)]="currentLayoutWidthPages">
+    <mat-option *ngFor="let value of layoutWidthOptions" [value]="value"> {{ value }} Pages </mat-option>
+  </mat-select>
 </mat-toolbar>
 
 <div class="spreadContainer" *ngIf="currentLayoutWidthPages === 1">
@@ -22,8 +20,9 @@
   </ng-container>
 </div>
 <ng-template #templateSpreadBox let-spread="spread">
-  <div class="spreadBox">
+  <div class="spreadBox" [ngClass]="{ centreSpread: spread[0] && spread[0].no === pages.length / 2 }">
     <ng-container *ngTemplateOutlet="templatePageBox; context: { page: spread[0] }"></ng-container>
+    <div class="centreGutter"><div class="pageHeader">&nbsp;</div></div>
     <ng-container *ngTemplateOutlet="templatePageBox; context: { page: spread[1] }"></ng-container>
   </div>
 </ng-template>

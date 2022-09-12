@@ -17,6 +17,21 @@
   background-color: white;
 }
 
+.centreGutter {
+  display: none;
+}
+
+.centreSpread {
+  gap: 0px;
+}
+
+.centreSpread .centreGutter {
+  display: block;
+  width: 5px;
+  box-shadow: 1px 1px 2px 1px #7c7c7c;
+  background-color: white;
+}
+
 .pageBox.nullPageBox {
   border-color: transparent;
   background-color: transparent;
@@ -40,5 +55,3 @@
 .shape {
   stroke: rgba(105, 105, 105, 0.753);
 }
-
-
