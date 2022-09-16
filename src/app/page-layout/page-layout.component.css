@@ -39,24 +39,25 @@
 }
 
 .pageHeader {
-  display: grid;
-  grid-template-columns: minmax(min-content, 1fr) auto minmax(min-content, 1fr);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   background-color: rgb(115, 222, 255);
-  padding: 1px 2px;
+  padding: 0px 2px 2px 2px;
 }
 
-.pageNumberLeft {
+.pageLeft .pageNumber {
   padding-right: 3px;
 }
 
-.pageNumberRight {
-  justify-self: right;
+.pageRight .pageNumber {
   padding-left: 3px;
 }
 
 .pageSectionNameWrapper {
   overflow: hidden;
 }
+
 .pageSectionName {
   text-overflow: ellipsis;
   overflow: hidden;
