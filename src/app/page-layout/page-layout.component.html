@@ -29,7 +29,13 @@
 <ng-template #templatePageBox let-page="page">
   <div class="pageBox" [ngClass]="{ nullPageBox: page === null }">
     <div *ngIf="page !== null">
-      <div class="pageHeader" [ngStyle]="{ 'text-align': page.no % 2 === 0 ? 'left' : 'right' }">{{ page.sec + page.no }}</div>
+      <div class="pageHeader {{ 'page' + (page.no % 2 === 0 ? 'Left' : 'Right') }}">
+        <div class="pageNumberLeft">{{ page.no % 2 === 0 ? page.headsec + page.no : '' }}</div>
+        <div class="pageSectionNameWrapper">
+          <div class="pageSectionName">{{ page.section }}</div>
+        </div>
+        <div class="pageNumberRight">{{ page.no % 2 === 1 ? page.headsec + page.no : '' }}</div>
+      </div>
       <svg [attr.viewBox]="'0 0 ' + page.w + ' ' + page.h" xmlns="http://www.w3.org/2000/svg">
         <rect
           class="shape"
