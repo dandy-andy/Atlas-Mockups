@@ -37,17 +37,38 @@
         <div class="pageNumber" *ngIf="page.no % 2 === 1">{{ page.headsec + page.no }}</div>
       </div>
       <svg [attr.viewBox]="'0 0 ' + page.w + ' ' + page.h" xmlns="http://www.w3.org/2000/svg">
-        <rect
-          class="shape"
-          [ngClass]="{ adShape: s.t === 1, reserveShape: s.t === 2 }"
-          *ngFor="let s of page.shapes"
-          [attr.x]="s.x + 1"
-          [attr.y]="s.y + 1"
-          [attr.width]="s.w - 2"
-          [attr.height]="s.h - 2"
-          stroke-width="1"
-          vector-effect="non-scaling-stroke"
-        />
+        <g *ngFor="let s of page.shapes">
+          <rect
+            class="shape"
+            [ngClass]="{ adShape: s.t === 1, reserveShape: s.t === 2 }"
+            [attr.x]="s.x + 1"
+            [attr.y]="s.y + 1"
+            [attr.width]="s.w - 2"
+            [attr.height]="s.h - 2"
+            stroke-width="1"
+            vector-effect="non-scaling-stroke"
+          />
+          <line
+            *ngIf="s.t === 1"
+            class="shapeCross"
+            [attr.x1]="s.x + 1"
+            [attr.y1]="s.y + 1"
+            [attr.x2]="s.x + s.w - 2"
+            [attr.y2]="s.y + s.h - 2"
+            stroke-width="1"
+            vector-effect="non-scaling-stroke"
+          />
+          <line
+            *ngIf="s.t === 1"
+            class="shapeCross"
+            [attr.x1]="s.x + 1"
+            [attr.y1]="s.y + s.h - 2"
+            [attr.x2]="s.x + s.w - 2"
+            [attr.y2]="s.y + 1"
+            stroke-width="1"
+            vector-effect="non-scaling-stroke"
+          />
+        </g>
       </svg>
     </div>
   </div>
