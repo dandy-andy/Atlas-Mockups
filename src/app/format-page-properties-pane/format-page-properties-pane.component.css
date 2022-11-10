@@ -1,0 +1,11 @@
+.drop-down-footer {
+  position: sticky;
+  background-color: white;
+  bottom: 0;
+  border-top: 1px solid rgb(214, 214, 214);
+  padding: 10px;
+}
+
+.drop-down-footer mat-checkbox {
+  margin-left: 20px;
+}

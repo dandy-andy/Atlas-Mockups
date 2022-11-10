@@ -60,4 +60,18 @@
       <mat-hint></mat-hint>
     </mat-form-field>
   </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Filtered list</mat-label>
+      <mat-select matInput multiple [value]="selectedItems">
+        <div>
+          <mat-option *ngFor="let item of items" [value]="item">{{ item }}</mat-option>
+        </div>
+        <div class="drop-down-footer">
+          <mat-checkbox name="showOdd" [(ngModel)]="showOdd">Odd</mat-checkbox>
+          <mat-checkbox name="showEven" [(ngModel)]="showEven">Even</mat-checkbox>
+        </div>
+      </mat-select>
+    </mat-form-field>
+  </p>
 </form>
